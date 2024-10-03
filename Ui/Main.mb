@@ -1,0 +1,28 @@
+[
+  {
+    "caption": "File",
+    "id": "file",
+    "children": [
+      {
+        "caption": "New file",
+        "command": {
+          "command": "addTab"
+        }
+      }
+    ]
+  },
+  {
+    "caption": "Tools",
+    "id": "tools",
+    "children": [
+      {
+        "caption": "Log console",
+        "command": {
+          "command": "logConsole"
+        },
+        "checkable": true,
+        "shortcut": "shift+esc"
+      }
+    ]
+  }
+]
