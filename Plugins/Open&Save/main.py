@@ -30,12 +30,13 @@ def openRecentFile(e=False):
         recLog.write(str(recentFiles))
         recLog.close()
 
-def openFile(filePath=None, encoding=None):
-    if not filePath:
+def openFile(filePath=None, encoding=None, used=True):
+    if not filePath and used:
         filePath, _ = vtapi.App.openFileDialog()
         if not filePath:
             return
     for file in filePath:
+        file = os.path.abspath(file)
         encoding = encoding or 'utf-8'
         apiCommand("addTab")(name=file, canSave=True)
         vtapi.Tab.setTab(-1)
