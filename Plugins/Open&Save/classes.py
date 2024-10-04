@@ -41,11 +41,11 @@ class FileReadThread(threading.Thread):
             file.close()
             self.finishedReading.set()
             self.finished.set()
+            self.vtapi.Tab.setTabSaved(self.vtapi.Tab.currentTabIndex(), True)
 
     def stop(self):
         self._is_running = False
         self.vtapi.Tab.setTabSaved(self.vtapi.Tab.currentTabIndex(), True)
-        self.vtapi.SigSlots.textChangeEvent(self.vtapi.Tab.currentTabIndex())
 
     def _sleep(self, milliseconds):
         time.sleep(milliseconds / 1000)
@@ -68,4 +68,3 @@ class FileWriteThread(threading.Thread):
     def stop(self):
         self._is_running = False
         self.vtapi.Tab.setTabSaved(self.vtapi.Tab.currentTabIndex(), True)
-        self.vtapi.SigSlots.textChangeEvent(self.vtapi.Tab.currentTabIndex())

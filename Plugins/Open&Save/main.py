@@ -56,7 +56,7 @@ def openFile(filePath=None, encoding=None):
         thread.finished.wait()
         thread.stop()
         vtapi.Tab.setTabTitle(i, os.path.basename(file or "Untitled"))
-        vtapi.Tab.setTabSaved(i, True)
+        vtapi.Tab.setTabSaved(vtapi.Tab.currentTabIndex(), True)
 
 def saveFile(f=None):
     i = vtapi.Tab.currentTabIndex()
