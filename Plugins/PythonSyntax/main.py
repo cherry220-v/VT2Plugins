@@ -101,15 +101,16 @@ def initAPI(api):
 
 
 def completeNlight():
-    text, line, column = vtapi.Text.getCompletePos(vtapi.Tab.currentTabIndex())
+    i = vtapi.Tab.currentTabIndex()
+    if vtapi.Tab.getTabFile(i) and vtapi.Tab.getTabFile(i).endswith(".py"):
+        text, line, column = vtapi.Text.getCompletePos(i)
 
-    script = jedi.Script(text)
-    try:
-        print(line, column)
-        completions = script.complete(line, column)
-        vtapi.Text.setCompleteList(vtapi.Tab.currentTabIndex(), [completion.name for completion in completions])
-    except jedi.api.exceptions._JediError:
-        return
+        script = jedi.Script(text)
+        try:
+            completions = script.complete(line, column)
+            vtapi.Text.setCompleteList(i, [completion.name for completion in completions])
+        except jedi.api.exceptions._JediError:
+            return
 
-    vtapi.Text.setHighlighter(vtapi.Tab.currentTabIndex(), highlighting_rules)
-    vtapi.Text.rehighlite(vtapi.Tab.currentTabIndex())
+        vtapi.Text.setHighlighter(i, highlighting_rules)
+        vtapi.Text.rehighlite(i)

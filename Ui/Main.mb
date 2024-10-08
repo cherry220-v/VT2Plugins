@@ -12,6 +12,20 @@
     ]
   },
   {
+    "caption": "View",
+    "id": "view",
+    "children": [
+      {
+        "caption": "Show minimap",
+        "command": {
+          "command": "hideShowMinimap"
+        },
+        "checkable": true,
+        "checked": true
+      }
+    ]
+  },
+  {
     "caption": "Tools",
     "id": "tools",
     "children": [
