@@ -24,8 +24,8 @@ def runFile():
     sys.path.insert(0, pythonPath())
 
     if os.name == 'nt':  # Если Windows
-        cmd_command = f"python {script_path} & pause"
-        process.start("cmd.exe", ["/k", cmd_command])
+        cmd_command = f"start cmd.exe /k python {script_path} & timeout /t -1"
+        process.start("cmd.exe", ["/c", cmd_command])
     else:  # Если Linux или другие ОС
         bash_command = f"bash -c \"python3 {script_path}; read -p 'Press Enter to continue...'\""
         process.start("x-terminal-emulator", ["-e", bash_command])
