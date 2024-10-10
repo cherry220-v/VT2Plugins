@@ -1,1 +1,1 @@
-['']
+['/home/trashman/Документы/VarTexter2/ui.py', '/home/trashman/Загрузки/x-square-fill.svg', '/home/trashman/.local/share/VarTexter2/Plugins/Open&Save/main.py']

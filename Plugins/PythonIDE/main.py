@@ -1,9 +1,3 @@
-import sys
-
-from PyQt5.uic.Compiler.qtproxies import QtCore
-from PyQt6.QtCore import QProcess, QObject
-from pexpect.replwrap import python
-
 pyFile = open("pythonpath", "a+")
 
 def pythonPath():
@@ -14,6 +8,11 @@ def initAPI(api):
     vtapi = api
     m = vtapi.FSys
     os = m.osModule()
+
+    import sys
+
+    from PyQt6.QtCore import QProcess
+
     from dialogClass import CustomDialog
 
 def runFile():
